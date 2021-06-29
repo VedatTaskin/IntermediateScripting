@@ -5,27 +5,32 @@ using UnityEngine.UI;
 
 public class UIControl : MonoBehaviour
 {
+    [SerializeField] Text scoreText;
 
+
+#region Singleton
     //Singleton Pattern
     private static UIControl instance;
     public static UIControl Instance { get => instance; set => instance = value; }
-
- 
-    [SerializeField] Text scoreText;
-    private int score=0;
-
-
+     
 
     private void Awake()
     {
         if (instance == null)
             instance = this;        
     }
+#endregion
 
-    public void SetScore()
+    private void Start()
     {
-        score++;
-        scoreText.text ="Score: " + score.ToString();
+        //When action occurs "OnGoldCollected" sends "integer" message, so receiving function (SetScore) has to take an integer parameter 
+        PlayerController.OnGoldCollected += SetScore; // OBSERVING
+    }
+
+    public void SetScore(int goldScore)
+    {
+        goldScore++;
+        scoreText.text ="Score: " + goldScore.ToString();
     }
    
 }
