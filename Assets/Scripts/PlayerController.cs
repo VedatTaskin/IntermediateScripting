@@ -7,6 +7,7 @@ using UnityEngine;
 namespace IntermediateScripting // Namespace Example
 {
 
+    [ExecuteInEditMode]
     // Observer Pattern Example
     public class PlayerController : MonoBehaviour  // Subject for Observer Pattern 
     {
@@ -27,8 +28,7 @@ namespace IntermediateScripting // Namespace Example
 
         private void Update()
         {
-            MovePlayer();           
-           
+            MovePlayer();          
         }
 
         private void OnTriggerEnter(Collider other)
@@ -38,9 +38,13 @@ namespace IntermediateScripting // Namespace Example
                 _goldScore++; // Increase gold count
                 Debug.Log("Player touched");
                 other.transform.position = new Vector3(UnityEngine.Random.Range(-5f, 5f), 1f, UnityEngine.Random.Range(-5f, 5f));
-                // UIControl.Instance.SetScore(); // singleton object diirect calling
+
 
                 OnGoldCollected?.Invoke(_goldScore);  // Calling Event
+
+                //Call Extension Method
+                transform.ResetTransformation();
+
             }
         }
 
