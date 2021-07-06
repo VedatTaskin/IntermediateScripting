@@ -20,5 +20,7 @@ Move Player (blue cylinder) with arrow keys and pickup the gold.
 14) Coroutines: not added (not too hard to implement :)
 15) Attributes: are markers that can be placed above a class, [SerializeField], [HideInInspector],
 		[ExecuteInEditMode], [Header("....")], [Range(x , y)] ....
-16) List and Dictionaries 
+16) List and Dictionaries .... 
+17) Scriptable Objects done: "Enemy" object in hierarchy needs a scriptable object, 
+		created by "EnemyType" 
 
